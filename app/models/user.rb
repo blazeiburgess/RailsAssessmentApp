@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
-  has_many :topics, through: :posts
-  has_many :boards, as: :owner
+  has_many :topics
+  
+  has_many :boards, foreign_key: "owner_id"
+
   has_many :user_boards
   has_many :user_topics
 end
