@@ -27,7 +27,11 @@ class BoardsController < ApplicationController
   end
 
   def edit
+
     @board = Board.find(params[:id])
+    unless current_user && current_user == @board.owner
+      return redirect_to boards_path, alert: "You don't have permission to edit this board"
+    end
   end
 
   def update
