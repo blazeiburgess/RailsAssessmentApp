@@ -10,4 +10,9 @@ class User < ApplicationRecord
 
   has_many :user_boards
   has_many :user_topics
+
+  def posted_topics
+    posts.map(&:topic).uniq
+
+  end
 end
