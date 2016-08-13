@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   def index
     @boards = Board.all
+    @user = current_user || User.new
   end
 
   def show
@@ -30,6 +31,17 @@ class BoardsController < ApplicationController
       redirect_to board_path(board)
     else
       render :edit, alert: "There was an error updating your board"
+    end
+  end
+
+  def destroy
+
+    board = Board.find(params[:id])
+    if board.owner == current_user
+      board.destroy
+      redirect_to boards_path, alert: "Board destroyed"
+    else
+      redirect_to boards_path, alert: "You do not have permissions to delete that board"
     end
   end
 

@@ -1,3 +1,6 @@
 <h4><%= link_to board.title, board_path(board) %></h4>
 <p><%= board.description %></p>
+<% if user == board.owner %>
+  <%= link_to "Delete Board",board_path(board), :method => :delete%>
+<% end %>
 <hr>
