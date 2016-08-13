@@ -9,13 +9,19 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
-    @board = Board.find(params[:board_id])
+    if current_user
+      @topic = Topic.new
+
+      @board = Board.find(params[:board_id])
+      @user = current_user
+    else
+      redirect_to board_path(@board), alert: "You must log in to make a topic"
+    end
   end
 
   def create
     if topic = Topic.create(topic_params)
-      redirect_to topic_path(topic)
+      redirect_to board_topic_path(topic)
     else
       redirect_to root_path, alert: "Error making your topic"
     end
