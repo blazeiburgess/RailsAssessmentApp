@@ -16,4 +16,9 @@ class UserBoardsController < ApplicationController
     user_board.destroy
     redirect_to user_boards_path
   end
+
+  private
+    def user_boards_params
+      params.require(:user_boards).permit(:board_id, :user_id)
+    end
 end
