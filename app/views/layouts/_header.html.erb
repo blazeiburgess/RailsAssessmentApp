@@ -1,8 +1,15 @@
 <ul class="horizontal">
   <div class="container">
-    <li><a href="javascript:void(0)">Home</a></li>
+    <li><%= link_to "Home", root_path %></li>
     <li><a href="javascript:void(0)">News</a></li>
     <li><a href="javascript:void(0)">Contact</a></li>
     <li><a href="javascript:void(0)">About</a></li>
+    <% if current_user %>
+      
+      <li class="u-pull-right"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+      <li class="u-pull-right"><%= link_to "Create Account", new_user_registration_path %></li>
+      <li class="u-pull-right"><%= link_to "Sign In", new_user_session_path %></li>
+    <% end %>
   </div>
 </ul>
