@@ -1,5 +1,7 @@
-<h4><%= link_to board.title, board_path(board) %></h4>
+<h4><%= link_to board.title, board_path(board) %></h4> 
+
 <p><%= board.description %></p>
+<button><%= link_to "View", board_path(board), class: "u-pull-rght" %></button><br>
 <% if user == board.owner %>
   <%= link_to "Delete Board",board_path(board), :method => :delete%>
 <% end %>
