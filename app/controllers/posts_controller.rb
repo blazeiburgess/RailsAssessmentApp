@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    redirect_to board_topic_path(@post.topic.board, @post.topic)
   end
 
   private

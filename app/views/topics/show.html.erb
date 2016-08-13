@@ -1,1 +1,6 @@
+
 <%= render partial: 'topic', locals: {:topic => @topic, :board => @board} %>
+
+<h5>Reply:</h5>
+
+<%= render partial: 'posts/form', locals: {:topic => @topic, :user => @user} rescue "You must login to respond." %>
