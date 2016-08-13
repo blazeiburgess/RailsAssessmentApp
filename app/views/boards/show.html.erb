@@ -10,7 +10,7 @@
   <strong><%= link_to "CREATE NEW TOPIC", new_board_topic_path(@board) %></strong>
 </div>
 <% @board.topics.limit(10).each do |topic| %>
-  <small><strong>ID: <%= topic.id %></strong></small>
+  <small><strong>ID: <%= topic.id %> | <%= topic.created %></strong></small>
   <p><%= topic.title %></p>
   <small><%= link_to "Reply", board_topic_path(@board, topic) %></small>
 <% end %>
