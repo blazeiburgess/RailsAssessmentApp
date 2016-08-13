@@ -1,0 +1,10 @@
+<%= form_form(post) do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %><br>
+  <%= f.hidden_field :topic_id, topic.id %>
+  <%= f.hidden_field :user_id, user.id %>
+  
+  <%= f.submit %>
+<% end %>
