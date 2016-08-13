@@ -6,11 +6,16 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @user = current_user
   end
 
   def new
-    @board = Board.new
-    @user = current_user
+    if current_user
+      @board = Board.new
+      @user = current_user
+    else
+      redirect_to boards_path, alert: "You need an account to make a board"
+    end
   end
 
   def create
