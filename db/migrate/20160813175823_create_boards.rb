@@ -3,7 +3,7 @@ class CreateBoards < ActiveRecord::Migration[5.0]
     create_table :boards do |t|
       t.string :title
       t.string :description
-      t.integer :owner
+      t.integer :owner_id
 
       t.timestamps
     end
