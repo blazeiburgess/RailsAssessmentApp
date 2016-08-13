@@ -10,7 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813164006) do
+ActiveRecord::Schema.define(version: 20160813180522) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "owner_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_boards", force: :cascade do |t|
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_topics", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
