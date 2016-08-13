@@ -32,6 +32,7 @@ class BoardsController < ApplicationController
     unless current_user && current_user == @board.owner
       return redirect_to boards_path, alert: "You don't have permission to edit this board"
     end
+    @user = current_user
   end
 
   def update
