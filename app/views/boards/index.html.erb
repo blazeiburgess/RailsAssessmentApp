@@ -1,3 +1,5 @@
 <% @boards.each do |board| %>
   <%= render partial: 'board', locals: {:board => board} %>
 <% end %>
+<%= link_to "Create New Board", new_board_path %>
+
