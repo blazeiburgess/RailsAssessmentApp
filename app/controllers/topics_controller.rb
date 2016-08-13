@@ -1,6 +1,16 @@
 class TopicsController < ApplicationController
+  def index
+    @board = Board.find(params[:board_id])
+    @topics = @board.topics
+  end
   def show
     @topic = Topic.find(params[:id])
+    @board = Board.find(params[:board_id])
+  end
+
+  def new
+    @topic = Topic.new
+    @board = Board.find(params[:board_id])
   end
 
   def create
