@@ -8,6 +8,7 @@ class BoardsController < ApplicationController
   end
 
   def new
+    @board = Board.new
     @user = current_user
   end
 
