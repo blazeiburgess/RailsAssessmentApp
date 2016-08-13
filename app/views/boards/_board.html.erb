@@ -3,6 +3,7 @@
 <p><%= board.description %></p>
 <button><%= link_to "View", board_path(board), class: "u-pull-rght" %></button><br>
 <% if user == board.owner %>
-  <%= link_to "Delete Board",board_path(board), :method => :delete%>
+  <%= link_to "Edit", edit_board_path(board) %><br>
+  <%= link_to "Delete",board_path(board), :method => :delete%>
 <% end %>
 <hr>
