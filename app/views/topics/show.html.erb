@@ -1,5 +1,10 @@
 
 <%= render partial: 'topic', locals: {:topic => @topic, :board => @board} %>
+<h5>Responses:</h5>
+<% @topic.posts.each do |post| %>
+  <%= render partial: 'posts/post', locals: {:post => post} %>
+  <hr>
+<% end %>
 
 <h5>Reply:</h5>
 
