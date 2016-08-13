@@ -25,10 +25,15 @@ class BoardsController < ApplicationController
 
   def update
     board = Board.find(params[:id])
-    if board
+    if board.update(board_params)
       redirect_to board_path(board)
     else
       render :edit, alert: "There was an error updating your board"
     end
   end
+
+  private
+    def board_params
+      params.require(:board).permit(:owner_id, :title, :description)
+    end
 end
