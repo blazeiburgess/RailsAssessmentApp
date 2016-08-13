@@ -1,4 +1,4 @@
-
+<h6><%= link_to @board.title, board_path(@board) %></h6>
 <%= render partial: 'topic', locals: {:topic => @topic, :board => @board} %>
 <%= link_to "Back", board_topics_path(@board) %>
 <h5>Responses:</h5>

@@ -1,3 +1,9 @@
+<h6><%= link_to @board.title, board_path(@board) %></h6>
+<% if @user %>
+  <div align="center">
+    <strong><%= link_to "CREATE NEW TOPIC", new_board_topic_path(@board) %></strong>
+  </div>
+<% end %>
 <% @topics.each do |topic| %>
   <%= render partial: 'topic', locals: {:topic => topic} %>
   <small><%= topic.posts.count %> responses</small><br>

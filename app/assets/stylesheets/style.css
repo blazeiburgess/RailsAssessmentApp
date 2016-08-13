@@ -31,3 +31,7 @@ a {
 a:hover {
   color: salmon;
 }
+
+h6 a {
+  color: black;
+}
