@@ -14,8 +14,12 @@ class UserTopicsController < ApplicationController
 
   def destroy
     user_topic = UserTopic.find(params[:id])
-    user_topic.destroy
-    redirect_to user_topics_path, alert: "Topic successfully unfavorited"
+    if current_user == user_topic.user
+      user_topic.destroy
+      redirect_to user_topics_path, alert: "Topic successfully unfavorited"
+    else
+      redirect_to root_path, alert: "You don't have permission to unfavorite this"
+    end
   end
 
   private
