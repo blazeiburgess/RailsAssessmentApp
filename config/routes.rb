@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :boards do
     resources :topics
   end
-  get '/myposts', to: 'posts#user'
+  get '/myposts', to: 'posts#user', as: 'user_posts'
   #devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'application#home'

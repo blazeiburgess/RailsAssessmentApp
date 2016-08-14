@@ -6,6 +6,7 @@
     <li><a href="javascript:void(0)">About</a></li>
     <% if current_user %>
       
+      <li class="u-pull-right"><%= link_to "My Posts", user_posts_path %></li>
       <li class="u-pull-right"><%= link_to "Logout (#{current_user.email.first(10)}...)", destroy_user_session_path, :method => :delete %></li>
     <% else %>
       <li class="u-pull-right"><%= link_to "Create Account", new_user_registration_path %></li>
