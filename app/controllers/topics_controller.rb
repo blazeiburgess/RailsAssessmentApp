@@ -1,9 +1,10 @@
 class TopicsController < ApplicationController
   def index
     @board = Board.find(params[:board_id])
-    @topics = @board.topics
+    @topics = @board.topics.shuffle
     @user = current_user
   end
+
   def show
     @topic = Topic.find(params[:id])
     @board = Board.find(params[:board_id])

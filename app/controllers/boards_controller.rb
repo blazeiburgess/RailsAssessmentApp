@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @topics = @board.last_10_topics
     @user = current_user
   end
 
