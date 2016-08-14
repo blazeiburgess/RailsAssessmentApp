@@ -32,6 +32,14 @@ class PostsController < ApplicationController
       render :edit, notice: "Error updating post"
     end
   end
+
+  def user
+    if current_user
+      @user = current_user
+    else
+      redirect_to root_path, alert: "You must be logged in to see posts you've made (obviously)"
+    end
+  end
   private
     def post_params
       params.require(:post).permit(:user_id, :topic_id, :title, :body)
