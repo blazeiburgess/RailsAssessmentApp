@@ -1,1 +1,17 @@
-<h1>Welcome</h1>
+<h1 align="center">Welcome</h1>
+
+<div class="row">
+  <div class="six columns">
+    <h5>Random Topics</h5>
+    <% @random_topics.each do |topic| %>
+      <strong><%= link_to topic.board.title, board_topic_path(topic.board, topic) %>:</strong> <%= topic.title %><br>
+    <% end %>
+  </div>
+  <div class="six columns">
+    <h5>Recent Topics</h5>
+    <% @recent_topics.each do |topic| %>
+      <strong><%= link_to topic.board.title, board_topic_path(topic.board, topic) %>:</strong> <%= topic.title %><br>
+    <% end %>
+
+  </div>
+</div>
