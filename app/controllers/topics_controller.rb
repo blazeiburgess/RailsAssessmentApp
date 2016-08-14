@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
 
   def create
     if topic = Topic.create(topic_params)
-      redirect_to board_topic_path(topic)
+      redirect_to board_topic_path(topic.board, topic)
     else
       redirect_to root_path, alert: "Error making your topic"
     end

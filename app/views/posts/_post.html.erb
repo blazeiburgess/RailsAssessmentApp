@@ -1,7 +1,7 @@
 <strong><%= post.title %></strong><br>
 <small>Post: <%= post.id %></small>
 
-<p><%= post.body %></p>
+<p><%= simple_format(post.body) %></p>
 <% if @user == post.user || @user == post.board.owner %>
   <%= link_to "Edit", edit_post_path(post) %>
   <%= link_to "Delete", post_path(post), :method => :delete, data: {confirm: "Are you sure?"} %>
