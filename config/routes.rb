@@ -6,9 +6,17 @@ Rails.application.routes.draw do
   resources :boards do
     resources :topics
   end
-  devise_for :users
+  #devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'application#home'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  devise_scope :user do
+    get '/auth/:provider/callback', to: 'users/sessions#create'
+  end
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+      sessions: 'users/sessions'
+    }
+  end
+  
 
 end
