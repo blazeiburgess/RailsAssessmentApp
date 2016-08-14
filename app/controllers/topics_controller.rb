@@ -38,9 +38,11 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    unless current_user == @post.user || current_user == @post.board.owner
-      return redirect_to board_topic_path(@post.board, @post.topic), alert: "You don't have permission to edit this topic"
+    @user = current_user
+    @topic = Topic.find(params[:id])
+    @board = @topic.board
+    unless current_user == @topic.user || current_user == @board.owner
+      return redirect_to board_topic_path(@board, @topic), alert: "You don't have permission to edit this topic"
     end
   end
 

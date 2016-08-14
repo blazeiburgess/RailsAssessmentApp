@@ -2,6 +2,12 @@
   <h2><%= @board.title %></h2>
 
   <h5><%= @board.description %></h5>
+  <% if @user == @board.owner %>
+
+    <%= link_to "Edit", edit_board_path(@board) %><br>
+    <%= link_to "Delete",board_path(@board), :method => :delete, data: {confirm: "Are you sure?"} %>
+
+  <% end %>
 </div>
 
 <hr>
