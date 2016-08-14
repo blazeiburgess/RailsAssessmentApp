@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     @random_topics = Board.random_topics
     @recent_topics = Board.recent_topics
   end
+
+  def news
+    @how_things_are = ['fine', 'great', 'wonderful', 'alright', 'decent'].shuffle[0]
+  end
 end
