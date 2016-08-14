@@ -1,9 +1,11 @@
 <h4><%= link_to board.title, board_path(board) %></h4> 
 
 <p><%= board.description %></p>
-<button><%= link_to "View", board_path(board), class: "u-pull-rght" %></button><br>
+<a href="<%= board_path(board) %>" class="u-pull-right"><button>View</button></a><br>
 <% if user == board.owner %>
+
   <%= link_to "Edit", edit_board_path(board) %><br>
-  <%= link_to "Delete",board_path(board), :method => :delete%>
+  <%= link_to "Delete",board_path(board), :method => :delete, data: {confirm: "Are you sure?"} %>
+  
 <% end %>
 <hr>
