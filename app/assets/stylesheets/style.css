@@ -1,3 +1,6 @@
+body {
+  background-color: #dedede;
+}
 ul {
   list-style-type: none;
   margin: 0;
@@ -41,6 +44,6 @@ strong a {
 }
 
 .greentext {
-  color: skyblue;
+  color: #4cb388;
 
 }
