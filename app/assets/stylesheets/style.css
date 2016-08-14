@@ -48,3 +48,10 @@ strong a {
   color: #4cb388;
 
 }
+textarea {
+  width: 80%;
+  height: 20em;
+}
+input {
+  width: 50%
+}
