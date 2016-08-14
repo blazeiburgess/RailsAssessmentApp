@@ -48,14 +48,14 @@ class TopicsController < ApplicationController
 
   def update
     
-    post = Post.find(params[:id])
-    unless current_user == post.user || current_user == post.board.owner
-      return redirect_to board_topic_path(post.board, post.topic), alert: "You don't have permission to edit this post"
+    topic = Topic.find(params[:id])
+    unless current_user == topic.user || current_user == topic.board.owner
+      return redirect_to board_topic_path(topic.board, topic), alert: "You don't have permission to edit this topic"
     end
-    if post.update(post_params)
-      redirect_to board_topic_path(post.board, post.topic)
+    if topic.update(topic_params)
+      redirect_to board_topic_path(topic.board, topic)
     else
-      render :edit, alert: "Error updating post"
+      render :edit, alert: "Error updating topic"
     end
   end
 
