@@ -11,8 +11,15 @@ class User < ApplicationRecord
   has_many :user_boards
   has_many :user_topics
 
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.email = auth["info"]["name"]
+    end
+  end
+
   def posted_topics
     posts.map(&:topic).uniq
-
   end
 end
