@@ -1,0 +1,9 @@
+<%= form_for(@user_topic) do |f| %>
+  <%= render 'layouts/error_messages', :target => @user_topic %>
+  <%= f.hidden_field :topic_id, value: topic.id %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  
+  <%= f.submit "Save to Favorites" %>
+<% end %>
+
+

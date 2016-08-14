@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
     @board = Board.find(params[:board_id])
     @user = current_user
     @post = Post.new
+    @user_topic = UserTopic.new
   end
 
   def new
@@ -26,10 +27,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    if topic = Topic.create(topic_params)
+    topic = Topic.new(topic_params)
+    if topic.save
       redirect_to board_topic_path(topic.board, topic)
     else
-      redirect_to root_path, alert: "Error making your topic"
+      
+      render :show
+
     end
   end
 

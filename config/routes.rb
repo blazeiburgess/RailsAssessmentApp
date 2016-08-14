@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :user_topics
   resources :user_boards
   resources :posts
-  # resources :topics
   resources :boards do
     resources :topics
   end

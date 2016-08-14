@@ -1,0 +1,7 @@
+<h3><%= @user.email %>'s Posts</h3>
+<% @user_topics.each do |user_topic| %>
+  <br><small><%= link_to user_topic.topic.board.title, board_topic_path(user_topic.topic.board, user_topic.topic) %></small><br>
+  <%= render partial: 'topics/topic', locals: {:topic => user_topic.topic, :user => @user } %>
+  <%= link_to "Unfavorite this topic", user_topic_path(user_topic), :method => :delete %>
+  <hr>
+<% end %>
