@@ -1,28 +1,27 @@
 # RailsAssessmentApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a forum application with simple authentication and user privileges. It allows for the creation of boards, topics (under boards), and posts (under topics). The user can save topics and see their post history. All interactions are externally anonymous, though a user needs an account to post.
 
-Things you may want to cover:
+Permissions are simple:
+  -users can create boards
+  -users can create topics
+  -users can create posts
+  -users can edit any topics or posts on boards they own
+  -users can edit or delete anything they created themselves
 
-* Ruby version
+User authentication is internally done with Devise. There is also the option to signin with Github, using the Omniauth gem. For your own application replace the Github Secret and Github ID keys in `config/initializers/omniauth.rb`
 
-* System dependencies
+Styling is done primarily with Skeleton. Greentext makes use of code by Jason Lam, https://github.com/tesu/greentextify/blob/master/greentext.js . 
 
-* Configuration
+# Use
+To run the application clone this repository, navigate to the parent directory and run
 
-* Database creation
+  rails s
 
-* Database initialization
+The flow of the application is self-explanatory from there and all content, except on the about and news pages, are creatable/editable by users.
 
-* How to run the test suite
+# License
+This is licensed under GPL 3 any forms of non-compliance are bugs.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-
-
-
-recommended name was crispy-disco
+Github's recommended name for this repo was crispy-disco
 

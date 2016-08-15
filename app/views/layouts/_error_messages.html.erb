@@ -5,10 +5,10 @@
     <p>
       <%= pluralize(target.errors.count, "error") %> prevented submission
     </p>
-    <ul>
+    
       <% target.errors.full_messages.each do |msg| %>
-	<li><%= msg %></li>
+	<p>&nbsp;&nbsp;&nbsp;<%= msg %></p>
       <% end %>
-    </ul>
+   
   </div>
 <% end %>
