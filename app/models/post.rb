@@ -24,7 +24,6 @@ class Post < ApplicationRecord
   end
 
   def user_topic=(user_topic_parameters)
-    # byebug
     if user_topic_parameters.delete("favorite?")
       UserTopic.create(user_topic_parameters)
     end

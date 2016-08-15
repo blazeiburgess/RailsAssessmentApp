@@ -13,12 +13,10 @@ class Users::SessionsController < Devise::SessionsController
     if auth_hash
       if user = User.find_by(email: auth_hash[:info][:nickname] + "@github.auth")
 	sign_in(user)
-	
       else
 	user = User.create(email: auth_hash[:info][:nickname] + "@github.auth", password: SecureRandom.hex)
 	sign_in(user)
       end
-	
       redirect_to root_path, notice: "Signed in successfully!"
     else
       super
