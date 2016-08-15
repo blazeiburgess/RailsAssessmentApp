@@ -1,4 +1,5 @@
 <h6><%= link_to @board.title, board_path(@board) %></h6>
+<a name="OP"></a>
 <%= render partial: 'topic', locals: {:topic => @topic, :board => @board, :user => @user} %>
 <% if @user && !@user.user_topics.pluck(:topic_id).include?(@topic.id) %>
   <%= render partial: 'user_topics/form', locals: {:topic => @topic, :user => @user} rescue "" %>

@@ -1,4 +1,4 @@
-<strong><%= post.title %></strong><br>
+<strong><a name="<%= post.id %>"></a><%= post.title %></strong><br>
 <small>Post: <%= post.id %></small>
 
 <p><%= Rinku.auto_link(simple_format(post.body), :all, 'target="blank"').html_safe %></p>
