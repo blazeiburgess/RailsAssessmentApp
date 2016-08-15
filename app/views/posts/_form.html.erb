@@ -6,11 +6,13 @@
   <%= f.text_area :body %><br>
   <%= f.hidden_field :topic_id, value: topic.id %>
   <%= f.hidden_field :user_id, value: user.id %>
-  <%= f.fields_for :user_topic, @user_topic do |ut|  %>
-    <%= ut.hidden_field :topic_id, value: topic.id %>
-    <%= ut.hidden_field :user_id, value: user.id %>
-    
-    <input type="checkbox" name="post[user_topic][favorite?]">&nbsp;Favorite this Topic?<br>
+  <% unless user.saved_topics.include?(topic) %>
+    <%= f.fields_for :user_topic, @user_topic do |ut|  %>
+      <%= ut.hidden_field :topic_id, value: topic.id %>
+      <%= ut.hidden_field :user_id, value: user.id %>
+      
+      <input type="checkbox" name="post[user_topic][favorite?]">&nbsp;Favorite this Topic?<br>
+    <% end %>
   <% end %>
   
   <%= f.submit %>

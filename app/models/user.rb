@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def posted_topics
     posts.map(&:topic).uniq
   end
+
+  def saved_topics
+    user_topics.map(&:topic)
+  end
 end
