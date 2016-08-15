@@ -3,6 +3,9 @@ class Board < ApplicationRecord
   has_many :posts, through: :topics
   belongs_to :owner, class_name: "User"
 
+  validates :title, presence: true
+  validates :description, presence: true
+
   def self.random_topics
     all.map(&:topics).flatten.shuffle.first(10)
   end

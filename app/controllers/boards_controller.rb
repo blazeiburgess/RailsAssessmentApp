@@ -20,9 +20,13 @@ class BoardsController < ApplicationController
   end
 
   def create
-    if board = Board.create(board_params)
+    board = Board.create(board_params)
+
+    if board.valid?
       redirect_to board_path(board)
     else
+      @board = board
+      @user = current_user
       render :new, alert: "There was an error processing your board"
     end
   end

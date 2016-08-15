@@ -9,7 +9,12 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @board = Board.find(params[:board_id])
     @user = current_user
-    @post = Post.new
+    if session[:failed_post]
+      @post = Post.create(session.delete(:failed_post))
+    else
+      @post = Post.new
+    end
+    
     @user_topic = UserTopic.new
   end
 
@@ -27,12 +32,14 @@ class TopicsController < ApplicationController
   end
 
   def create
-    topic = Topic.new(topic_params)
-    if topic.save
+    topic = Topic.create(topic_params)
+    if topic.valid?
       redirect_to board_topic_path(topic.board, topic)
     else
-      
-      render :show
+      @board = Board.find(params[:board_id])
+      @user = current_user
+      @topic = topic      
+      render :new
 
     end
   end

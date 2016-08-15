@@ -1,5 +1,10 @@
+
 <% if target.errors.any? %>
+
   <div id="error_explanation">
+    <p>
+      <%= pluralize(target.errors.count, "error") %> prevented submission
+    </p>
     <ul>
       <% target.errors.full_messages.each do |msg| %>
 	<li><%= msg %></li>

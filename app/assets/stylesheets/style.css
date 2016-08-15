@@ -1,19 +1,23 @@
 body {
   background-color: #dedede;
 }
-ul {
-  list-style-type: none;
+ul.horizontal {
+  
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
 }
 
-li {
+ul {
+  list-style-type: none;
+}
+
+.horizontal div li {
   float: left;
 }
 
-li a {
+.horizontal div li a {
   display: block;
   color: white;
   text-align: center;
@@ -22,7 +26,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.horizontal div li a:hover {
   background-color: #111;
   color: lightgray;
 }
@@ -54,4 +58,14 @@ textarea {
 }
 input[type='text'] {
   width: 50%
+}
+#error_explanation {
+  background-color: salmon;
+  color: white;
+  border-left-style: solid;
+  border-left-color: red;
+}
+
+#error_explanation * {
+  padding: 2px 10px;
 }

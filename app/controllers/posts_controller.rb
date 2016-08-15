@@ -5,9 +5,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
+
     @post = Post.create(post_params)
-    redirect_to board_topic_path(@post.topic.board, @post.topic)
+    if @post.valid?
+      redirect_to board_topic_path(@post.topic.board, @post.topic)
+    else
+      @topic = Topic.find(post_params[:topic_id])
+      @board = @topic.board
+      session[:failed_post] = @post
+      redirect_to board_topic_path(@board, @topic)
+    end
   end
 
   def destroy

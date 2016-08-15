@@ -1,4 +1,6 @@
 <%= form_for(board) do |f| %>
+  <%= render 'layouts/error_messages', :target => @board %>
+    
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   <%= f.label :description %><br>
