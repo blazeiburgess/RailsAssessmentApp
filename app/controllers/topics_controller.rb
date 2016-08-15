@@ -66,6 +66,18 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    
+    topic = Topic.find(params[:id])
+    board = topic.board
+    if topic.user == current_user || board.owner == current_user
+      topic.destroy
+      redirect_to board_path(board), alert: "Topic successfully destroyed"
+    else
+      redirect_to board_topic_path(board, topic), alert: "You don't have permission to destroy this topic"
+    end
+  end
+
   private
     def topic_params
       params.require(:topic).permit(:user_id, :title, :body, :board_id)
