@@ -5,7 +5,7 @@
   </div>
 <% end %>
 <% @topics.each do |topic| %>
-  <%= render partial: 'topic', locals: {:topic => topic} %>
+  <%= render partial: 'topic', locals: {:topic => topic, :board => @board, :user => @user} %>
   <small><%= topic.posts.count %> responses</small><br>
   <a href="<%= board_topic_path(@board, topic) %>"><button>View</button></a>
 <% end %>

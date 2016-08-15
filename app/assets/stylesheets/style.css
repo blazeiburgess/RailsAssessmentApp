@@ -52,6 +52,6 @@ textarea {
   width: 80%;
   height: 20em;
 }
-input {
+input[type='text'] {
   width: 50%
 }
