@@ -18,7 +18,9 @@ class Post < ApplicationRecord
   end
 
   def default_title_is_anonymous
-    self.title = "Anonymous"
+    unless self.title
+      self.title = "Anonymous"
+    end
   end
 
   def user_topic=(user_topic_parameters)
