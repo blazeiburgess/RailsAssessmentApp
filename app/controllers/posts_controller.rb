@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    byebug
     @post = Post.create(post_params)
     redirect_to board_topic_path(@post.topic.board, @post.topic)
   end
@@ -42,6 +43,6 @@ class PostsController < ApplicationController
   end
   private
     def post_params
-      params.require(:post).permit(:user_id, :topic_id, :title, :body)
+      params.require(:post).permit(:user_id, :topic_id, :title, :body, user_topic: [:topic_id, :user_id, :favorite?])
     end
 end

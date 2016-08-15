@@ -20,4 +20,11 @@ class Post < ApplicationRecord
   def default_title_is_anonymous
     self.title = "Anonymous"
   end
+
+  def user_topic=(user_topic_parameters)
+    # byebug
+    if user_topic_parameters.delete("favorite?")
+      UserTopic.create(user_topic_parameters)
+    end
+  end
 end
