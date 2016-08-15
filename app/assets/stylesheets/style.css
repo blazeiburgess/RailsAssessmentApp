@@ -69,3 +69,8 @@ input[type='text'] {
 #error_explanation * {
   padding: 2px 10px;
 }
+
+.alert {
+  background-color: skyblue;
+  color: white;
+}
