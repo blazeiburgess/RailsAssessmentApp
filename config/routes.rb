@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   get '/myposts', to: 'posts#user', as: 'user_posts'
   get '/news', to: 'application#news', as: 'news'
+  get '/about', to: 'application#about', as: 'about'
   #devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'application#home'

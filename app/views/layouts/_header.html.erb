@@ -3,18 +3,19 @@
     <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "News", news_path %></li>
     <li><%= link_to "Boards", boards_path %></li>
-    <li><a href="javascript:void(0)">About</a></li>
+    <li><%= link_to "About", about_path %></li>
     <% if current_user %>
+      <li class="u-pull-right"><%= link_to "Logout (#{current_user.email.first(10)}...)", destroy_user_session_path, :method => :delete %></li>
       
       <li class="u-pull-right"><%= link_to "My Posts", user_posts_path %></li>
       <li class="u-pull-right"><%= link_to "My Topics", user_topics_path %></li>
 
-      <li class="u-pull-right"><%= link_to "Logout (#{current_user.email.first(10)}...)", destroy_user_session_path, :method => :delete %></li>
-    <% else %>
-      <li class="u-pull-right"><%= link_to "Create Account", new_user_registration_path %></li>
-      <li class="u-pull-right"><%= link_to "Sign In", new_user_session_path %></li>
       
+    <% else %>
+      <li class="u-pull-right"><%= link_to "Sign In", new_user_session_path %></li>
       <li class="u-pull-right"><%= link_to "Sign In With Github", '/auth/github' %></li>
+      <li class="u-pull-right"><%= link_to "Create Account", new_user_registration_path %></li>
+      
     <% end %>
   </div>
 </ul>
