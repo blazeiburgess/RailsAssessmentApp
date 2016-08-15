@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
     @post = Post.create(post_params)
     if @post.valid?
-      redirect_to board_topic_path(@post.topic.board, @post.topic)
+      redirect_to board_topic_path(@post.topic.board, @post.topic) + "##{@post.id}"
     else
       @topic = Topic.find(post_params[:topic_id])
       @board = @topic.board
@@ -25,17 +25,21 @@ class PostsController < ApplicationController
   end
 
   def edit
+
     @post = Post.find(params[:id])
+    
     @user = current_user
+    
     unless @post.user == @user || @post.board.owner == @user
       redirect_to board_topic_path(@post.board, @post.topic), alert: "You don't have permission to edit this post"
     end
+    render :layout => "scriptless"
   end
 
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
-      redirect_to board_topic_path(post.board, post.topic), notice: "Post successfully updated"
+      redirect_to board_topic_path(post.board, post.topic) + "##{post.id}", notice: "Post successfully updated"
     else
       render :edit, notice: "Error updating post"
     end
