@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :topic
   before_save :default_title_is_anonymous
+  
   validates :body, presence: true
   validates :title, length: { maximum: 200, too_long: "%{count} characters is the maximum allowed" }
   
@@ -18,9 +19,8 @@ class Post < ApplicationRecord
   end
 
   def default_title_is_anonymous
-    unless self.title
-      self.title = "Anonymous"
-    end
+    self.title = "Anonymous" if self.title.empty?
+   
   end
 
   def user_topic=(user_topic_parameters)
